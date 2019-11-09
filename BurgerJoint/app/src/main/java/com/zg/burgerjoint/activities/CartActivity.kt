@@ -1,5 +1,6 @@
 package com.zg.burgerjoint.activities
 
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -56,9 +57,17 @@ class CartActivity : BaseActivity(), CartView {
 
     override fun displayThankYouMessage() {
         rlThankYouMessage.visibility = View.VISIBLE
+
+        val animator = ObjectAnimator.ofFloat(rlThankYouMessage,
+            View.TRANSLATION_Y, rlThankYouMessage.height.toFloat(), 0f)
+        animator.duration = 500
+        animator.start()
     }
 
     override fun hideThankYouMessage() {
-        rlThankYouMessage.visibility = View.GONE
+        val animator = ObjectAnimator.ofFloat(rlThankYouMessage,
+            View.TRANSLATION_Y, 0f, rlThankYouMessage.height.toFloat())
+        animator.duration = 500
+        animator.start()
     }
 }
