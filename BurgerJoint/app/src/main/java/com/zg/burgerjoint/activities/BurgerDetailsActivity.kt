@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.animation.AnimationUtils
 import com.bumptech.glide.Glide
 import com.zg.burgerjoint.R
 import com.zg.burgerjoint.data.vos.BurgerVO
@@ -32,10 +33,17 @@ class BurgerDetailsActivity : BaseActivity(),BurgerDetailsView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_burger_details)
         setUpPresenter()
-
+        setUpListeners()
         val burgerId = intent.getIntExtra(EXTRA_BURGER_ID, 0)
 
         mPresenter.onBurgerDetailsUiReady(this, burgerId)
+    }
+
+    private fun setUpListeners(){
+        ivBurger.setOnClickListener {
+           val animation =  AnimationUtils.loadAnimation(applicationContext, R.anim.rotate)
+            ivBurger.startAnimation(animation)
+        }
     }
 
     private fun setUpPresenter(){

@@ -1,10 +1,16 @@
 package com.zg.burgerjoint.activities
 
+import android.animation.Animator
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.transition.Fade
+import android.transition.Slide
+import android.view.Gravity
 import android.view.View
+import android.view.Window
+import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.recyclerview.widget.GridLayoutManager
 import com.zg.burgerjoint.R
 import com.zg.burgerjoint.adapters.CartAdapter
@@ -28,12 +34,26 @@ class CartActivity : BaseActivity(), CartView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setUpAnimations()
         setContentView(R.layout.activity_cart)
         setSupportActionBar(toolbar)
         setUpPresenter()
         setUpListeners()
         setUpRecycler()
         mPresenter.onUIReady(this)
+    }
+
+    private fun setUpAnimations(){
+        with(window){
+            requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
+            val slide = Slide()
+            slide.slideEdge = Gravity.RIGHT
+            slide.interpolator = AccelerateDecelerateInterpolator()
+            slide.duration = 500
+
+            enterTransition = slide
+            exitTransition = slide
+        }
     }
 
     private fun setUpListeners() {

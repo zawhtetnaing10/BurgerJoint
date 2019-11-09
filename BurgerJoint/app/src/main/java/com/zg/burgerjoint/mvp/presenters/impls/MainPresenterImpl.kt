@@ -33,7 +33,7 @@ class MainPresenterImpl : MainPresenter, BaseAppPresenterImpl<MainView>() {
             })
     }
 
-    override fun onTapBurger(burger: BurgerVO) {
-        mView.navigateToBurgerDetailsScreen(burgerId = burger.burgerId)
+    override fun onTapBurger(burger: BurgerVO,burgerImageView: ImageView) {
+        mView.navigateToBurgerDetailsScreenWithAnimation(burgerId = burger.burgerId, burgerImageView = burgerImageView)
     }
 }

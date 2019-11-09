@@ -5,9 +5,13 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.transition.Fade
 import android.view.View
+import android.view.Window
 import android.widget.ImageView
-import androidx.core.animation.addListener
+import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.util.Pair
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.zg.burgerjoint.R
@@ -16,7 +20,6 @@ import com.zg.burgerjoint.data.vos.BurgerVO
 import com.zg.burgerjoint.mvp.presenters.MainPresenter
 import com.zg.burgerjoint.mvp.presenters.impls.MainPresenterImpl
 import com.zg.burgerjoint.mvp.views.MainView
-
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity(), MainView {
@@ -26,12 +29,22 @@ class MainActivity : BaseActivity(), MainView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setUpAnimations()
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
         setUpPresenter()
         setUpListeners()
         setUpRecycler()
         mPresenter.onUIReady(this)
+    }
+
+    private fun setUpAnimations(){
+        with(window) {
+            requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
+            val fade = Fade()
+            fade.duration = 600
+            exitTransition = fade
+        }
     }
 
     private fun setUpListeners() {
@@ -50,12 +63,15 @@ class MainActivity : BaseActivity(), MainView {
         rvBurgerList.layoutManager = GridLayoutManager(applicationContext, 1)
     }
 
-    override fun navigateToBurgerDetailsScreen(burgerId: Int) {
-        startActivity(BurgerDetailsActivity.newIntent(this, burgerId))
+    override fun navigateToBurgerDetailsScreenWithAnimation(burgerId: Int, burgerImageView: ImageView) {
+        val imagePair = Pair.create(burgerImageView as View, "tBurgerImage")
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this,imagePair)
+        ActivityCompat.startActivity(this,BurgerDetailsActivity.newIntent(this,burgerId),options.toBundle())
     }
 
     override fun navigateToCartScreen() {
-        startActivity(CartActivity.newIntent(this))
+        startActivity(CartActivity.newIntent(this)
+            , ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle())
     }
 
     override fun displayBurgerList(burgerList: List<BurgerVO>) {

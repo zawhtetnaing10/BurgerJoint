@@ -18,6 +18,7 @@
 
         <ImageView
             android:id="@+id/ivBurger"
+            android:transitionName="tBurgerImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:scaleType="centerCrop"

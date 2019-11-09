@@ -5,7 +5,7 @@ import com.zg.burgerjoint.data.vos.BurgerVO
 
 interface MainView : BaseView{
     fun displayBurgerList(burgerList : List<BurgerVO>)
-    fun navigateToBurgerDetailsScreen(burgerId : Int)
+    fun navigateToBurgerDetailsScreenWithAnimation(burgerId : Int, burgerImageView: ImageView)
     fun navigateToCartScreen()
     fun animateAddBurgerToCart(burger : BurgerVO, burgerImageView : ImageView)
     fun displayCountInCart(burgersInCartCount : Int)

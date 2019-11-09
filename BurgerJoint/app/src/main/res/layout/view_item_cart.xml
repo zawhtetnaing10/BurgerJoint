@@ -54,7 +54,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:backgroundTint="@android:color/holo_orange_light"
+        android:backgroundTint="@android:color/holo_red_dark"
         android:drawableStart="@drawable/ic_add_shopping_cart_white_24dp"
         android:paddingStart="@dimen/margin_medium_2"
         android:text="Remove From Cart"

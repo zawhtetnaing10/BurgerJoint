@@ -12,7 +12,7 @@ class BurgerViewHolder(itemView: View, private val mDelegate: BurgerViewHolderAc
     init {
         itemView.cvBurgerImage.setOnClickListener {
             mData?.let {
-                mDelegate.onTapBurger(it)
+                mDelegate.onTapBurger(it, itemView.ivBurger)
             }
         }
 
