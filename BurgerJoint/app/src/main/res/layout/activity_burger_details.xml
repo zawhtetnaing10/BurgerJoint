@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="@android:color/holo_orange_light"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <ImageView
+                android:id="@+id/ivBurger"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/burgers"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.7" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvBurgerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Chicken Burger"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_heading_1x"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:layout_marginTop="@dimen/margin_medium_3" />
+
+            <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvBurgerName"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:layout_marginTop="@dimen/margin_medium_2"
+                android:textSize="@dimen/text_regular"
+                android:text="The hot chicken sandwich or simply (Quebec French: sandwich chaud au poulet) is a type of chicken sandwich consisting of chicken, sliced bread, and gravy (which is generally poutine sauce). The sandwich is usually served with green peas and commonly found in Eastern Canadian cuisine. It's especially popular in Quebec and is often considered one of the province's staple dishes.[7][8] Since it is so commonly found in eateries of Quebec (Rôtisserie St-Hubert, Valentine, e.g.) and less seen outside the province, many Québécois regard it as a part of Quebec cuisine and believe it to have originated in the province.[7] This combination of chicken, gravy, and peas is known by its own term: galvaude,[7] seen in poutine galvaude.
+Although less featured in other areas of North America, the sandwich is also found in small diners from the Canadian Maritimes[9] and throughout the Southeastern United States.[10]
+The sandwich was a working-class dish already common and well established in North American cuisine by the early 1900s[11] and featured on the food menus of pharmacists and druggists of the time.[12] Due to its ease of preparation and its minimal costs, the sandwich was also widely served in the mess halls and cafeterias of the mid-1900s.[13][14]
+This style of sandwich often makes use of leftovers from a previous meal. Substituting turkey for the chicken would make a hot turkey sandwich[15] and substituting roast beef makes a variety of the roast beef sandwich.[16]"
+                />
+
+        </RelativeLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_medium_2"
+        android:backgroundTint="@android:color/holo_orange_light"
+        android:src="@drawable/ic_add_white_24dp"
+        app:layout_anchor="@id/appbarLayout"
+        app:layout_anchorGravity="bottom|end" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
