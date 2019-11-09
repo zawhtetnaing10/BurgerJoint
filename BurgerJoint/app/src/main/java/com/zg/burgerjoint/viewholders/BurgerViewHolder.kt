@@ -18,7 +18,7 @@ class BurgerViewHolder(itemView: View, private val mDelegate: BurgerViewHolderAc
 
         itemView.btnAddToCart.setOnClickListener {
             mData?.let {
-                mDelegate.onTapAddToCart(it)
+                mDelegate.onTapAddToCart(it, itemView.ivBurger)
             }
         }
     }
