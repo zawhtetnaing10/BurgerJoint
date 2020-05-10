@@ -1,16 +1,12 @@
 package com.zg.burgerjoint.mvp.presenters.impls
 
 import android.widget.ImageView
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LifecycleRegistry
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.zg.burgerjoint.data.model.BurgerModel
 import com.zg.burgerjoint.data.model.impls.BurgerModelImpl
 import com.zg.burgerjoint.data.model.impls.MockBurgerModelImpl
 import com.zg.burgerjoint.data.vos.BurgerVO
-import com.zg.burgerjoint.dummy.getDummyBurgers
 import com.zg.burgerjoint.mvp.views.MainView
 import io.mockk.MockKAnnotations
 import io.mockk.impl.annotations.RelaxedMockK
@@ -18,8 +14,6 @@ import io.mockk.verify
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Mockito.`when`
-import org.mockito.Mockito.mock
 import org.robolectric.annotation.Config
 
 @RunWith(AndroidJUnit4::class)
