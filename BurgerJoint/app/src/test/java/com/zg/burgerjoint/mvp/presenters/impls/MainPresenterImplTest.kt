@@ -44,6 +44,7 @@ class MainPresenterImplTest {
         mPresenter = MainPresenterImpl()
         mPresenter.initPresenter(mView)
         mPresenter.mBurgerModel = this.mBurgerModel
+
     }
 
 
