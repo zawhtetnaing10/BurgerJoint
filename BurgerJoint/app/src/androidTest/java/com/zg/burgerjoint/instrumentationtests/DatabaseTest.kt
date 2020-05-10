@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //package com.zg.burgerjoint.instrumentationtests
 //
 //import android.content.Context
@@ -53,3 +54,4 @@
 //
 //
 //}
+
