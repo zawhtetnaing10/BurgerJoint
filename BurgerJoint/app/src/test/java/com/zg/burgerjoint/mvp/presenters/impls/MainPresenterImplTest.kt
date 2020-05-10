@@ -46,63 +46,51 @@ class MainPresenterImplTest {
     }
 
 
-
-    companion object {
-
-        fun getMockLifeCycleOwner() : LifecycleOwner{
-            val lifeCycleOwner = mock(LifecycleOwner::class.java)
-            val lifeCycleRegistry = LifecycleRegistry(lifeCycleOwner)
-            lifeCycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_RESUME)
-            `when`(lifeCycleOwner.lifecycle).thenReturn(lifeCycleRegistry)
-            return lifeCycleOwner
-        }
-
-        fun getDummyBurger(): BurgerVO {
-            val tappedBurger = BurgerVO()
-            tappedBurger.burgerId = 1
-            tappedBurger.burgerName = "Big Mac"
-            tappedBurger.burgerImageUrl = ""
-            tappedBurger.burgerDescription = "Big Mac Burger"
-            return tappedBurger
-        }
-
-        fun getDummyImageView(): ImageView {
-            return ImageView(ApplicationProvider.getApplicationContext())
+    @Test
+    fun onTapAddToCart_callAddBurgerToCart() {
+        val tappedBurger = BurgerVO()
+        tappedBurger.burgerId = 1
+        tappedBurger.burgerName = "Big Mac"
+        tappedBurger.burgerImageUrl = ""
+        tappedBurger.burgerDescription = "Big Mac Burger"
+        val imageView = ImageView(ApplicationProvider.getApplicationContext())
+        mPresenter.onTapAddToCart(tappedBurger, imageView)
+        verify {
+            mView.addBurgerToCart(tappedBurger, imageView)
         }
     }
 
+    @Test
+    fun onTapCart_callNavigateToCartScreen() {
+        mPresenter.onTapCart()
+        verify {
+            mView.navigatetoCartScreen()
+        }
+    }
+
+    @Test
+    fun onTapBurger_callNavigateToBurgerDetails() {
+        val tappedBurger = BurgerVO()
+        tappedBurger.burgerId = 1
+        tappedBurger.burgerName = "Big Mac"
+        tappedBurger.burgerImageUrl = ""
+        tappedBurger.burgerDescription = "Big Mac Burger"
+        val imageView = ImageView(ApplicationProvider.getApplicationContext())
+        mPresenter.onTapBurger(tappedBurger, imageView)
+        verify {
+            mView.navigateToBurgerDetailsScreen(tappedBurger.burgerId, imageView)
+        }
+    }
 
 //    @Test
-//    fun onTapAddToCart_callAddBurgerToCart() {
-//        mPresenter.onTapAddToCart(getDummyBurger(), getDummyImageView())
-//        verify {
-//            mView.addBurgerToCart(getDummyBurger(), getDummyImageView())
-//        }
-//    }
-//
-//    @Test
-//    fun onTapCart_callNavigateToCartScreen() {
-//        mPresenter.onTapCart()
-//        verify {
-//            mView.navigatetoCartScreen()
-//        }
-//    }
-//
-//    @Test
-//    fun onTapBurger_callNavigateToBurgerDetails() {
-//
-//        mPresenter.onTapBurger(getDummyBurger(), getDummyImageView())
-//        verify {
-//            mView.navigateToBurgerDetailsScreen(getDummyBurger().burgerId, getDummyImageView())
-//        }
-//    }
-//
-//    @Test
 //    fun onUIReady_callDisplayBurgerList_callDisplayCountInCart() {
-//        mPresenter.onUIReady(getMockLifeCycleOwner())
+//        val lifeCycleOwner = mock(LifecycleOwner::class.java)
+//        val lifeCycleRegistry = LifecycleRegistry(lifeCycleOwner)
+//        lifeCycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_RESUME)
+//        `when`(lifeCycleOwner.lifecycle).thenReturn(lifeCycleRegistry)
+//        mPresenter.onUIReady(lifeCycleOwner)
 //        verify {
 //            mView.displayBurgerList(getDummyBurgers())
-//            mView.displayCountInCart(0)
 //        }
 //    }
 }
