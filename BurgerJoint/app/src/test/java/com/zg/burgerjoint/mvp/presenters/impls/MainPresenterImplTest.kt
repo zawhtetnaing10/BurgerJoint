@@ -73,6 +73,17 @@ class MainPresenterImplTest {
     }
 
 
+    @Test
+    fun onUIReady_callDisplayBurgerList_callDisplayCountInCart() {
+        mPresenter.onUIReady(getMockLifeCycleOwner())
+        verify {
+            mView.displayBurgerList(getDummyBurgers())
+            mView.displayCountInCart(0)
+        }
+    }
+
+
+
     // Prepare Necessary Objects
     companion object {
 
@@ -100,13 +111,4 @@ class MainPresenterImplTest {
 
 
 
-//
-//    @Test
-//    fun onUIReady_callDisplayBurgerList_callDisplayCountInCart() {
-//        mPresenter.onUIReady(getMockLifeCycleOwner())
-//        verify {
-//            mView.displayBurgerList(getDummyBurgers())
-//            mView.displayCountInCart(0)
-//        }
-//    }
 }
