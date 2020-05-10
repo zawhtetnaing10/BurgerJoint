@@ -7,6 +7,7 @@ import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import com.zg.burgerjoint.data.vos.BurgerVO
 import com.zg.burgerjoint.persistence.BurgerJointDatabase
 import com.zg.burgerjoint.persistence.daos.BurgerDao
+import org.hamcrest.*
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -35,7 +36,7 @@ class DatabaseTest {
     @Test
     fun insertIntoDatabaseTest() {
         val burger: BurgerVO = getDummyBurger()
-        burgerDao.insert(burger
+        burgerDao.insert(burger)
         assert(burgerDao.findBurgerById(burger.burgerId).value?.burgerId == burger.burgerId)
     }
 
