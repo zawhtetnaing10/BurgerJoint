@@ -10,15 +10,15 @@ class BurgerViewHolder(itemView: View, private val mDelegate: BurgerViewHolderAc
     : BaseViewHolder<BurgerVO>(itemView) {
 
     init {
-        itemView.cvBurgerImage.setOnClickListener {
+        itemView.setOnClickListener {
             mData?.let {
-                mDelegate.onTapBurger(it)
+                mDelegate.onTapBurger(it, itemView.ivBurger)
             }
         }
 
         itemView.btnAddToCart.setOnClickListener {
             mData?.let {
-                mDelegate.onTapAddToCart(it)
+                mDelegate.onTapAddToCart(it, itemView.ivBurger)
             }
         }
     }

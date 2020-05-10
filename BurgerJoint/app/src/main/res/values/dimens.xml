@@ -32,4 +32,12 @@
 
     <!--App Specific-->
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="game_burger_size">80dp</dimen>
+    <dimen name="block_width">150dp</dimen>
+    <dimen name="block_height">60dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="margin_xxxlarge">64dp</dimen>
+    <dimen name="margin_94">96dp</dimen>
 </resources>

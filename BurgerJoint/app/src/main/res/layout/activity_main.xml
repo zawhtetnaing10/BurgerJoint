@@ -25,6 +25,15 @@
                 android:layout_gravity = "end"
                 android:layout_marginEnd="@dimen/margin_medium_3">
 
+                <TextView
+                    android:id="@+id/btnPlayGame"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_regular_2x"
+                    android:textStyle="bold"
+                    android:text="Play Game"/>
+
                 <ImageView
                     android:id="@+id/ivCart"
                     android:layout_width="wrap_content"
@@ -52,6 +61,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <FrameLayout
+        android:id="@+id/flRoot"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:backgroundTint="@android:color/white"

@@ -20,7 +20,7 @@ class CartPresenterImpl : CartPresenter, BaseAppPresenterImpl<CartView>() {
             })
     }
 
-    override fun onTapRemoveFromCart(burger: BurgerVO) {
+    override fun onTapRemoveFromCart(burger: BurgerVO, adapterPosition : Int) {
         mBurgerModel
             .removeItemFromCart(burger)
     }

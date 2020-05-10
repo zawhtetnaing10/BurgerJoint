@@ -1,7 +1,5 @@
 package com.zg.burgerjoint.adapters
 
-import android.content.Context
-import android.view.LayoutInflater
 import androidx.recyclerview.widget.RecyclerView
 import com.zg.burgerjoint.viewholders.BaseViewHolder
 
@@ -19,16 +17,16 @@ abstract class BaseRecyclerAdapter<T : BaseViewHolder<W>, W> : RecyclerView.Adap
     }
 
     fun setNewData(newData: List<W>) {
-        if (newData.isEmpty()){
+        if (newData.isEmpty()) {
             mData.clear()
-        }else{
+        } else {
             mData = ArrayList(newData)
         }
         notifyDataSetChanged()
     }
 
     fun appendNewData(newData: List<W>) {
-        if(newData.isEmpty()) return
+        if (newData.isEmpty()) return
 
         val startPosition = mData.size
 
@@ -49,13 +47,13 @@ abstract class BaseRecyclerAdapter<T : BaseViewHolder<W>, W> : RecyclerView.Adap
         notifyDataSetChanged()
     }
 
-    fun removeGently(data: W){
+    fun removeGently(data: W) {
         val index = mData.indexOf(data)
         if (index == -1) return
 
         mData.remove(data)
         notifyItemRemoved(index)
-        notifyItemRangeChanged(index,mData.size)
+        notifyItemRangeChanged(index, mData.size)
         notifyDataSetChanged()
 
     }
@@ -69,4 +67,10 @@ abstract class BaseRecyclerAdapter<T : BaseViewHolder<W>, W> : RecyclerView.Adap
         mData = arrayListOf()
         notifyDataSetChanged()
     }
+
+
 }
+
+
+
+

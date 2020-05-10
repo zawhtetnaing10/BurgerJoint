@@ -4,6 +4,9 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.transition.Explode
+import android.view.Window
+import android.view.animation.AnimationUtils
 import com.bumptech.glide.Glide
 import com.zg.burgerjoint.R
 import com.zg.burgerjoint.data.vos.BurgerVO
@@ -28,14 +31,46 @@ class BurgerDetailsActivity : BaseActivity(),BurgerDetailsView {
 
     private lateinit var mPresenter : BurgerDetailsPresenter
 
+    var isFavorite : Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setUpTransitions()
         setContentView(R.layout.activity_burger_details)
         setUpPresenter()
-
+        setUpListeners()
         val burgerId = intent.getIntExtra(EXTRA_BURGER_ID, 0)
 
         mPresenter.onBurgerDetailsUiReady(this, burgerId)
+    }
+
+    private fun setUpTransitions(){
+        with(window){
+            requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
+            val explode = Explode()
+            explode.duration = 200
+            enterTransition = explode
+            exitTransition = explode
+        }
+    }
+
+    private fun setUpListeners(){
+        ivBurger.setOnClickListener {
+            val animator = AnimationUtils.loadAnimation(this, R.anim.rotate)
+            ivBurger.startAnimation(animator)
+        }
+
+        btnFavorite.setOnClickListener {
+            if(!isFavorite){
+                btnFavorite.speed = 1.0f
+                btnFavorite.playAnimation()
+                isFavorite = true
+            } else {
+                btnFavorite.speed = -4.0f
+                btnFavorite.playAnimation()
+                isFavorite = false
+            }
+        }
     }
 
     private fun setUpPresenter(){

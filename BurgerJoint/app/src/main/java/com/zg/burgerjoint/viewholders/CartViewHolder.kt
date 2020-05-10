@@ -16,7 +16,7 @@ class CartViewHolder(itemView: View, private val mDelegate: CartViewHolderAction
 
         itemView.btnRemoveFromCart.setOnClickListener {
             mData?.let {
-                mDelegate.onTapRemoveFromCart(it)
+                mDelegate.onTapRemoveFromCart(it, this.adapterPosition)
             }
         }
     }

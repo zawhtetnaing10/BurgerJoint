@@ -6,4 +6,5 @@ interface CartView : BaseView {
     fun displayItemsInCart(burgers : List<BurgerVO>)
     fun displayThankYouMessage()
     fun hideThankYouMessage()
+    fun animateRemoveItemFromCart(adapterPosition : Int)
 }
