@@ -3,6 +3,7 @@ package com.zg.burgerjoint.mvp.presenters.impls
 import androidx.lifecycle.LifecycleOwner
 import com.zg.burgerjoint.mvp.presenters.LoginPresenter
 import com.zg.burgerjoint.mvp.views.LoginView
+import com.zg.burgerjoint.utils.EM_LOGIN_FAIL_ERROR_MESSAGE
 
 class LoginPresenterImpl : LoginPresenter, BaseAppPresenterImpl<LoginView>() {
     override fun onUIReady(owner: LifecycleOwner) {}
@@ -11,7 +12,7 @@ class LoginPresenterImpl : LoginPresenter, BaseAppPresenterImpl<LoginView>() {
         if(userName.isNotEmpty() || password.isNotEmpty()){
             mView.navigateToMainScreen()
         } else {
-            mView.showErrorMessage("Username and Password should not be empty")
+            mView.showErrorMessage(EM_LOGIN_FAIL_ERROR_MESSAGE)
         }
     }
 }
