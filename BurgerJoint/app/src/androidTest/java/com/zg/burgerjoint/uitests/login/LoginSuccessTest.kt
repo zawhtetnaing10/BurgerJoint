@@ -5,7 +5,6 @@ import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import androidx.test.rule.ActivityTestRule
 import com.zg.burgerjoint.R
@@ -15,7 +14,6 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4ClassRunner::class)
-@LargeTest
 open class LoginSuccessTest {
 
     private val activityTestRule = ActivityTestRule<LoginActivity>(LoginActivity::class.java)
@@ -41,7 +39,6 @@ open class LoginSuccessTest {
             closeSoftKeyboard()
         )
         onView(withId(R.id.btnLogin)).perform(click())
-        Thread.sleep(400)
         onView((withId(R.id.rvBurgerList))).check(matches(isDisplayed()))
     }
 

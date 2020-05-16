@@ -25,9 +25,13 @@ class GoToCartListTest {
 
     @Test
     fun tapOnCart_navigateToCartList() {
+
         onView(withId(R.id.ivCart))
             .perform(click())
+
         onView(withId(R.id.btnCheckOut))
             .check(matches(isDisplayed()))
+
     }
 }
+
