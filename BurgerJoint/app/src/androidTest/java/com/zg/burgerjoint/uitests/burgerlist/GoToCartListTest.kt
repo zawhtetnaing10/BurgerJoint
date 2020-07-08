@@ -16,6 +16,7 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4ClassRunner::class)
 class GoToCartListTest {
+
     private val activityTestRule = ActivityTestRule<MainActivity>(MainActivity::class.java)
 
     @Before

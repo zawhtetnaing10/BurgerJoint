@@ -29,8 +29,10 @@ class AddToCartTest {
 
     @Test
     fun tapAddToCart_numberOfItemsInCartIncreased() {
+
         onView(first<View>(withId(R.id.btnAddToCart)))
             .perform(click())
+
         onView(withId(R.id.tvCartCount))
             .check(matches(withText("1")))
     }

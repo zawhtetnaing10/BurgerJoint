@@ -155,25 +155,25 @@ class GameActivity : AppCompatActivity() {
     }
 
     private fun setUpTouchListener() {
-//        ivGameBurger.setOnTouchListener { view , motionEvent ->
-//            when(motionEvent.action){
-//                MotionEvent.ACTION_DOWN ->{
-//                    springAnimationY.cancel()
-//                    springAnimationX.cancel()
-//                    xPositionDiff = motionEvent.rawX - view.x
-//                    yPositionDiff = motionEvent.rawY - view.y
-//                }
-//                MotionEvent.ACTION_MOVE -> {
-//                    ivGameBurger.x = motionEvent.rawX - xPositionDiff
-//                    ivGameBurger.y = motionEvent.rawY - yPositionDiff
-//                }
-//                MotionEvent.ACTION_UP -> {
-//                    springAnimationX.start()
-//                    springAnimationY.start()
-//                }
-//            }
-//            true
-//        }
+        ivGameBurger.setOnTouchListener { view , motionEvent ->
+            when(motionEvent.action){
+                MotionEvent.ACTION_DOWN ->{
+                    springAnimationY.cancel()
+                    springAnimationX.cancel()
+                    xPositionDiff = motionEvent.rawX - view.x
+                    yPositionDiff = motionEvent.rawY - view.y
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    ivGameBurger.x = motionEvent.rawX - xPositionDiff
+                    ivGameBurger.y = motionEvent.rawY - yPositionDiff
+                }
+                MotionEvent.ACTION_UP -> {
+                    springAnimationX.start()
+                    springAnimationY.start()
+                }
+            }
+            true
+        }
         ivGameBurger.setOnTouchListener { _, motionEvent ->
             burgerGestureDetector.onTouchEvent(motionEvent)
         }

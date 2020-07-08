@@ -29,6 +29,7 @@ class GoToBurgerDetailsTest {
     fun tapOnBurger_navigateToBurgerDetails() {
         onView(withId(R.id.rvBurgerList))
             .perform(RecyclerViewActions.actionOnItemAtPosition<BurgerViewHolder>(0, click()))
+
         onView(withId(R.id.tvDescription))
             .check(matches(isDisplayed()))
     }
